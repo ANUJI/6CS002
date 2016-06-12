@@ -96,6 +96,23 @@ public void drawDomino(Graphics g, DominoPanel dominoPanel) {
 				30 + this.ly * 20, 20, this.low, Color.BLUE);
 	}
 }
+
+public void drawDominoDominoPanel(Graphics g, DominoPanel dominoPanel) {
+	if (this.placed) {
+		int y = Math.min(this.ly, this.hy);
+		int x = Math.min(this.lx, this.hx);
+		int w = Math.abs(this.lx - this.hx) + 1;
+		int h = Math.abs(this.ly - this.hy) + 1;
+		g.setColor(Color.WHITE);
+		g.fillRect(20 + x * 20, 20 + y * 20, w * 20, h * 20);
+		g.setColor(Color.RED);
+		g.drawRect(20 + x * 20, 20 + y * 20, w * 20, h * 20);
+		dominoPanel.drawDigitGivenCentre(g, 30 + this.hx * 20,
+				30 + this.hy * 20, 20, this.high, Color.BLUE);
+		dominoPanel.drawDigitGivenCentre(g, 30 + this.lx * 20,
+				30 + this.ly * 20, 20, this.low, Color.BLUE);
+	}
+}
   
   
   
