@@ -35,22 +35,10 @@ public class PictureFrame {
         fillDigitGivenCentre(g, 30 + see * 20, 10, 20, see+1);
       }
     }
-
+      	 		
+    
     public void drawDomino(Graphics g, Domino d) {
-      if (d.placed) {
-        int y = Math.min(d.ly, d.hy);
-        int x = Math.min(d.lx, d.hx);
-        int w = Math.abs(d.lx - d.hx) + 1;
-        int h = Math.abs(d.ly - d.hy) + 1;
-        g.setColor(Color.WHITE);
-        g.fillRect(20 + x * 20, 20 + y * 20, w * 20, h * 20);
-        g.setColor(Color.RED);
-        g.drawRect(20 + x * 20, 20 + y * 20, w * 20, h * 20);
-        drawDigitGivenCentre(g, 30 + d.hx * 20, 30 + d.hy * 20, 20, d.high,
-            Color.BLUE);
-        drawDigitGivenCentre(g, 30 + d.lx * 20, 30 + d.ly * 20, 20, d.low,
-            Color.BLUE);
-      }
+      d.drawDomino(g, this);
     }
 
     void drawDigitGivenCentre(Graphics g, int x, int y, int diameter, int n) {
@@ -63,7 +51,7 @@ public class PictureFrame {
       g.drawString(txt, x - fm.stringWidth(txt) / 2, y + fm.getMaxAscent() / 2);
     }
 
-    void drawDigitGivenCentre(Graphics g, int x, int y, int diameter, int n,
+    public void drawDigitGivenCentre(Graphics g, int x, int y, int diameter, int n,
         Color c) {
       radius = diameter / 2;
       g.setColor(c);
@@ -122,7 +110,7 @@ public class PictureFrame {
 
   public DominoPanel dp;
 
-  public void PictureFrame(Main sf) {
+  public PictureFrame(Main sf) {
     master = sf;
     if (dp == null) {
       JFrame f = new JFrame("Abominodo");
