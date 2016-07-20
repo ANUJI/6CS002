@@ -113,6 +113,11 @@ public void drawDominoDominoPanel(Graphics g, DominoPanel dominoPanel) {
 				30 + this.ly * 20, 20, this.low, Color.BLUE);
 	}
 }
+
+public boolean thisIsTopLeftOfDomino(int x, int y) {
+	return (x == Math.min(this.lx, this.hx))
+			&& (y == Math.min(this.ly, this.hy));
+}
   
   
   
