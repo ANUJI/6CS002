@@ -128,14 +128,17 @@ public class Main {
   private void shuffleDominoesOrder() {
     List<Domino> shuffled = new LinkedList<Domino>();
 
-    while (_d.size() > 0) {
-      int n = (int) (Math.random() * _d.size());
-      shuffled.add(_d.get(n));
-      _d.remove(n);
-    }
-
-    _d = shuffled;
+    shuffled(shuffled);
+	_d = shuffled;
   }
+
+private void shuffled(List<Domino> shuffled) {
+	while (_d.size() > 0) {
+		int n = (int) (Math.random() * _d.size());
+		shuffled.add(_d.get(n));
+		_d.remove(n);
+	}
+}
 
   private void invertSomeDominoes() {
     for (Domino d : _d) {
