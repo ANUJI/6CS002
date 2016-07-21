@@ -255,22 +255,29 @@ private Domino exectutedFindGuessAndDomino1(int x, int y, Domino d) {
   
 
   private Domino findGuessByLH(int x, int y) {
-    for (Domino d : _g) {
-      if ((d.low == x && d.high == y) || (d.high == x && d.low == y)) {
-        return d;
-      }
-    }
+    for (Domino d : _g)
+		exectutedFindGuessAndDomino1(x, y, d);
     return null;
   }
-
+  
   private Domino findDominoByLH(int x, int y) {
-    for (Domino d : _d) {
+	    for (Domino d : _d)
+			exectutedFindGuessAndDomino1(x, y, d);
+	    return null;
+	  }
+/**
+ * @param x
+ * @param y
+ * @param d
+ * @return 
+ */
+@SuppressWarnings("unused")
+private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
       if ((d.low == x && d.high == y) || (d.high == x && d.low == y)) {
         return d;
       }
+      return null;
     }
-    return null;
-  }
 
   private void printDominoes() {
     for (Domino d : _d) {
