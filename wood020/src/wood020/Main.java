@@ -18,6 +18,14 @@ import javax.swing.JScrollPane;
 public class Main {
 
   private String playerName;
+  
+  private String getplayerName () {
+      return playerName;
+    }
+   private void setplayerName (String arg) {
+	   playerName = arg;
+    }
+   
   public List<Domino> _d;
   public List<Domino> _g;
   public int[][] grid = new int[7][8];
