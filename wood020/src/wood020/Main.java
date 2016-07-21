@@ -230,22 +230,29 @@ private void shuffled(List<Domino> shuffled) {
   }
 
   private Domino findDominoAt(int x, int y) {
-    for (Domino d : _d) {
-      if ((d.lx == x && d.ly == y) || (d.hx == x && d.hy == y)) {
-        return d;
-      }
-    }
+	  for (Domino d : _d)
+			exectutedFindGuessAndDomino1(x, y, d);
+	    return null;
+	  }
+  
+private Domino findGuessAt(int x, int y) {
+	for (Domino d : _d)
+		exectutedFindGuessAndDomino1(x, y, d);
     return null;
   }
-
-  private Domino findGuessAt(int x, int y) {
-    for (Domino d : _g) {
-      if ((d.lx == x && d.ly == y) || (d.hx == x && d.hy == y)) {
-        return d;
-      }
-    }
-    return null;
-  }
+/**
+ * @param x
+ * @param y
+ * @param d
+ * @return 
+ */
+private Domino exectutedFindGuessAndDomino1(int x, int y, Domino d) {
+	if ((d.lx == x && d.ly == y) || (d.hx == x && d.hy == y)) {
+	    return d;
+	  }
+	  return null;
+	}
+  
 
   private Domino findGuessByLH(int x, int y) {
     for (Domino d : _g) {
