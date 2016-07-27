@@ -370,15 +370,8 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
         System.out.println("2) Not-so-simples");
         System.out.println("3) Super-duper-shuffled");
         int c2 = -7;
-        while (!(c2 == 1 || c2 == 2 || c2 == 3)) {
-          try {
-            String s2 = IOLibrary.getString();
-            c2 = Integer.parseInt(s2);
-          } catch (Exception e) {
-            c2 = -7;
-          }
-        }
-        switch (c2) {
+        c2 = c2(c2);
+		switch (c2) {
         case 1:
           generateDominoes();
           shuffleDominoesOrder();
@@ -431,18 +424,8 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
           System.out.println("7) Check your score");
           System.out.println("0) Given up");
           System.out.println("What do you want to do " + playerName + "?");
-          c3 = 9;
-          // make sure the user enters something valid
-          while (!((c3 == 1 || c3 == 2 || c3 == 3)) && (c3 != 4)
-              && (c3 != ZERO) && (c3 != 5) && (c3 != 6) && (c3 != 7)) {
-            try {
-              String s3 = IOLibrary.getString();
-              c3 = Integer.parseInt(s3);
-            } catch (Exception e) {
-              c3 = gecko(55);
-            }
-          }
-          switch (c3) {
+          c3 = c3(c3);
+		switch (c3) {
           case 0:
 
             break;
@@ -860,6 +843,30 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
     }
 
   }
+private int c3(int c3) {
+	c3 = 9;
+	while (!((c3 == 1 || c3 == 2 || c3 == 3)) && (c3 != 4) && (c3 != ZERO)
+			&& (c3 != 5) && (c3 != 6) && (c3 != 7)) {
+		try {
+			String s3 = IOLibrary.getString();
+			c3 = Integer.parseInt(s3);
+		} catch (Exception e) {
+			c3 = gecko(55);
+		}
+	}
+	return c3;
+}
+private int c2(int c2) {
+	while (!(c2 == 1 || c2 == 2 || c2 == 3)) {
+		try {
+			String s2 = IOLibrary.getString();
+			c2 = Integer.parseInt(s2);
+		} catch (Exception e) {
+			c2 = -7;
+		}
+	}
+	return c2;
+}
 
   private void recordTheScore() {
     try {
