@@ -26,7 +26,7 @@ public class Main {
 	   playerName = arg;
     }
    
-  public List<Domino> _d;
+  public List<Domino> _dominoList ;
   public List<Domino> _g;
   public int[][] grid = new int[7][8];
   public int[][] gg = new int[7][8];
@@ -38,14 +38,14 @@ public class Main {
   PictureFrame pf = new PictureFrame();
 
   private void generateDominoes() {
-    _d = new LinkedList<Domino>();
+    _dominoList  = new LinkedList<Domino>();
     int count = 0;
     int x = 0;
     int y = 0;
     for (int l = 0; l <= 6; l++) {
       for (int h = l; h <= 6; h++) {
         Domino d = new Domino(h, l);
-        _d.add(d);
+        _dominoList .add(d);
         d.place(x, y, x + 1, y);
         count++;
         x += 2;
@@ -80,7 +80,7 @@ public class Main {
   }
 
   void collateGrid() {
-    for (Domino d : _d) {
+    for (Domino d : _dominoList ) {
       if (!d.placed) {
         grid[d.hy][d.hx] = 9;
         grid[d.ly][d.lx] = 9;
@@ -137,19 +137,19 @@ public class Main {
     List<Domino> shuffled = new LinkedList<Domino>();
 
     shuffled(shuffled);
-	_d = shuffled;
+	_dominoList  = shuffled;
   }
 
 private void shuffled(List<Domino> shuffled) {
-	while (_d.size() > 0) {
-		int n = (int) (Math.random() * _d.size());
-		shuffled.add(_d.get(n));
-		_d.remove(n);
+	while (_dominoList .size() > 0) {
+		int n = (int) (Math.random() * _dominoList .size());
+		shuffled.add(_dominoList .get(n));
+		_dominoList .remove(n);
 	}
 }
 
   private void invertSomeDominoes() {
-    for (Domino d : _d) {
+    for (Domino d : _dominoList ) {
       if (Math.random() > 0.5) {
         d.invert();
       }
@@ -160,7 +160,7 @@ private void shuffled(List<Domino> shuffled) {
     int x = 0;
     int y = 0;
     int count = 0;
-    for (Domino d : _d) {
+    for (Domino d : _dominoList ) {
       count++;
       d.place(x, y, x + 1, y);
       x += 2;
@@ -238,13 +238,13 @@ private void shuffled(List<Domino> shuffled) {
   }
 
   private Domino findDominoAt(int x, int y) {
-	  for (Domino d : _d)
+	  for (Domino d : _dominoList )
 			exectutedFindGuessAndDomino1(x, y, d);
 	    return null;
 	  }
   
 private Domino findGuessAt(int x, int y) {
-	for (Domino d : _d)
+	for (Domino d : _dominoList )
 		exectutedFindGuessAndDomino1(x, y, d);
     return null;
   }
@@ -269,7 +269,7 @@ private Domino exectutedFindGuessAndDomino1(int x, int y, Domino d) {
   }
   
   private Domino findDominoByLH(int x, int y) {
-	    for (Domino d : _d)
+	    for (Domino d : _dominoList )
 			exectutedFindGuessAndDomino1(x, y, d);
 	    return null;
 	  }
@@ -288,7 +288,7 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
     }
 
   private void printDominoes() {
-    for (Domino d : _d) {
+    for (Domino d : _dominoList ) {
       System.out.println(d);
     }
   }
@@ -351,7 +351,7 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
         System.out.println();
         break;      
       case 0: {
-        if (_d == null) {
+        if (_dominoList  == null) {
           System.out.println("It is a shame that you did not want to play");
         } else {
           System.out.println("Thankyou for playing");
@@ -751,7 +751,7 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
         recordTheScore();
         System.out.println("Here is the solution:");
         System.out.println();
-        Collections.sort(_d);
+        Collections.sort(_dominoList );
         printDominoes();
         System.out.println("you scored " + score);
 
@@ -889,7 +889,7 @@ private int c2(int c2) {
   }
 
   public void drawDominoes(Graphics g) {
-    for (Domino d : _d) {
+    for (Domino d : _dominoList ) {
       pf.dp.drawDomino(g, d);
     }
   }
