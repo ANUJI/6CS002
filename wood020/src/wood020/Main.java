@@ -196,13 +196,9 @@ private void shuffled(List<Domino> shuffled) {
         boolean weFancyARotation = Math.random() < 0.5;
         if (weFancyARotation) {
           if (theCellBelowIsTopLeftOfHorizontalDomino(x, y)) {
-            Domino e = findDominoAt(x, y + 1);
-            e.hx = x;
-            e.lx = x;
-            d.hx = x + 1;
+            Domino e = e(x, y);
+			d.hx = x + 1;
             d.lx = x + 1;
-            e.ly = y + 1;
-            e.hy = y;
             d.ly = y + 1;
             d.hy = y;
           }
@@ -226,6 +222,14 @@ private void shuffled(List<Domino> shuffled) {
       }
     }
   }
+private Domino e(int x, int y) {
+	Domino e = findDominoAt(x, y + 1);
+	e.hx = x;
+	e.lx = x;
+	e.ly = y + 1;
+	e.hy = y;
+	return e;
+}
 
   private boolean theCellToTheRightIsTopLeftOfVerticalDomino(int x, int y) {
     Domino e = findDominoAt(x + 1, y);
