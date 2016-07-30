@@ -17,7 +17,8 @@ import javax.swing.JScrollPane;
 
 public class Main {
 
-  private String playerName;
+  private static final double MATH_CONSTANT = 0.5;
+private String playerName;
   
   private String getplayerName () {
       return playerName;
@@ -193,7 +194,7 @@ private void shuffled(List<Domino> shuffled) {
     Domino d = findDominoAt(x, y);
     if (d.thisIsTopLeftOfDomino(x, y)) {
       if (d.ishl()) {
-        boolean weFancyARotation = Math.random() < 0.5;
+        boolean weFancyARotation = Math.random() < MATH_CONSTANT;
         if (weFancyARotation) {
           if (theCellBelowIsTopLeftOfHorizontalDomino(x, y)) {
             Domino e = e(x, y);
