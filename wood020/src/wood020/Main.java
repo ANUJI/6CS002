@@ -587,9 +587,8 @@ private Domino exectutedFindGuessAndDomino(int x, int y, Domino d) {
               case 0:
                 System.out.println("Well done");
                 System.out.println("You get a 3 point bonus for honesty");
-                score++;
-                score++;
-                score++;
+                
+                score = score +3 ;
                 cf++;
                 break;
               case 1:
